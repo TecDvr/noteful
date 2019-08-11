@@ -20,7 +20,6 @@ export default class App extends React.Component {
         <header className='header'>
           <Link className='title' style={{ textDecoration: 'none' }} to='/'>Noteful</Link>
         </header>
-        <div className='content'>
           <section>
             <FolderList folderInfo={this.state.folders} />
             <Route 
@@ -35,7 +34,6 @@ export default class App extends React.Component {
               path='/notelist' 
               render={ () => <NoteList noteInfo={this.state.notes} />} />
           </main>
-        </div>
       </div>
     )
   }

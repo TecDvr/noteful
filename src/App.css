@@ -40,9 +40,3 @@
   border: black solid 2px;
   padding-top: 30px;
 }
-
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}

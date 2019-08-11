@@ -4,11 +4,14 @@ import Folder from '../Folder/Folder';
 import './FolderList.css';
 
 export default class FolderList extends React.Component {
+
     render() {
         return (
             <div>
-                <p>this is the folder list</p>
-                <p>{this.props.folders}</p>
+                {this.props.folders.map(folder => <Folder 
+                   
+                />)}
+                <button>Add Folder</button>
             </div>
         );
     }

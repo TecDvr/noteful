@@ -31,3 +31,18 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  text-align: center;
+  font-size: 40px;
+  color: black;
+  height: 90px;
+  border: black solid 2px;
+  padding-top: 30px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

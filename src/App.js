@@ -9,9 +9,12 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      folders: 'this is a folder',
-      notes: 'this is a note'
+      ...dummyStore
     }
+  }
+
+  componentDidMount() {
+    console.log(this.state);
   }
 
   render() {
@@ -21,18 +24,17 @@ export default class App extends React.Component {
           <Link className='title' style={{ textDecoration: 'none' }} to='/'>Noteful</Link>
         </header>
           <section>
-            <FolderList folderInfo={this.state.folders} />
+            <FolderList folders={this.state.folders}/>
             <Route 
               exact
               path='/folderlist' 
-              render={ () => <FolderList folderInfo={this.state.folders} />} />
+              render={ () => <FolderList folders={this.state.folders} />} />
           </section>
           <main>
-            <NoteList noteInfo={this.state.notes}/>
             <Route 
               exact
               path='/notelist' 
-              render={ () => <NoteList noteInfo={this.state.notes} />} />
+              render={ () => <NoteList notes={this.state.notes} />} />
           </main>
       </div>
     )

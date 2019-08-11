@@ -8,7 +8,7 @@ export default class FolderList extends React.Component {
         return (
             <div>
                 <p>this is the folder list</p>
-                <p>{this.props.folderInfo}</p>
+                <p>{this.props.folders}</p>
             </div>
         );
     }

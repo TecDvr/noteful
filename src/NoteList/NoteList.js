@@ -6,7 +6,7 @@ export default class NoteList extends React.Component {
         return (
             <div>
                 <p>this is the note list</p>
-                <p>{this.props.noteInfo}</p>
+                <p>{this.props.notes}</p>
             </div>
         )
     }

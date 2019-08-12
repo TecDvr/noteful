@@ -9,7 +9,7 @@ export default class FolderList extends React.Component {
         return (
             <div>
                 {this.props.folders.map(folder => <Folder 
-                   
+                    name={folder.name}
                 />)}
                 <button>Add Folder</button>
             </div>

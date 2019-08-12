@@ -6,7 +6,7 @@ export default class Folder extends React.Component {
     render() {
         return (
             <div className='folder'>
-                <NavLink to='/'>Folder</NavLink>
+                <NavLink to='/folderpage/:id'>{this.props.name}</NavLink>
             </div>
         )
     }

@@ -9,7 +9,9 @@ export default class NoteList extends React.Component {
                 {this.props.notes.map(note => <Note 
                     name={note.name}
                     modified={note.modified}
+                    id={note.id}
                 />)}
+                <button>Add Note</button>
             </div>
         )
     }

@@ -37,18 +37,18 @@ export default class App extends React.Component {
             <Route 
               exact
               path='/folderpage/:id'
-              render={ (rprops) => <FolderPage folders={this.state.folders} notes={this.state.notes} {...rprops}/>} />
+              component={FolderPage} />
           </section>
 
           <main>
             <Route 
               exact
               path='/' 
-              render={ (rprops) => <NoteList folders={this.state.folders} notes={this.state.notes} {...rprops} />} />
+              component={NoteList} />
             <Route 
               exact
               path='/notepage/:id'
-              render={ (rprops) => <NotePage folders={this.state.folders} notes={this.state.notes} {...rprops}/>} />  
+              component={NotePage} />  
           </main>
 
         </div>

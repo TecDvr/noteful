@@ -12,26 +12,24 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ...dummyStore,
-      folders: [],
-      notes: []
+      ...dummyStore
     }
   }
 
-  componentDidMount() {
-    console.log(this.state);
-  }
-
   render() {
+    const contextValue = {
+      ...dummyStore
+    }
+    
     return (
-      <NotefulContext.Provider value={this.state}>
+      <NotefulContext.Provider value={contextValue}>
         <div className='mainPage'>
 
           <header className='header'>
             <Link className='title' style={{ textDecoration: 'none' }} to='/'>Noteful</Link>
           </header>
 
-          <Folder folders={this.state.folders} />
+          <Folder />
 
           <section>
             <Route 

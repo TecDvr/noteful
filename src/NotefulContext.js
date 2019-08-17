@@ -1,3 +1,10 @@
 import React from 'react';
+import dummyStore from './dummy-store';
 
-export default React.createContext();
+const NotefulContext = React.createContext({
+    ...dummyStore,
+    folders: [],
+    notes: [],
+})
+
+export default NotefulContext

@@ -1,6 +1,6 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
-import { NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 export default class Note extends React.Component {
     static contextType = NotefulContext;
@@ -16,7 +16,11 @@ export default class Note extends React.Component {
                     <div>
                         <NavLink to={`/note/${note.id}`}>{note.name}</NavLink>
                         <p>Last modified: {note.modified}</p>
-                        <p>{note.content}</p>
+
+                        {(<Route path = '/'/>) ? <p></p> : <p>{note.content}</p>}
+                        
+
+
                         <button>Delete</button>
                     </div>)
                 })}

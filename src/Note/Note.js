@@ -1,6 +1,6 @@
 import React from 'react';
 import './Note.css';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 
 export default class Note extends React.Component {
@@ -9,9 +9,9 @@ export default class Note extends React.Component {
             <NotefulContext.Consumer>
                 {(value) => (
                     <div>
-                        <NavLink to={`/notepage/${value.state.id}`}>{value.state.name}</NavLink>
-                        <p>Modified on: {value.state.modified}</p>
-                        <p>{value.state.content}</p>
+                        <NavLink to={`/notepage/${value.notes.id}`}>{value.notes.name}</NavLink>
+                        <p>Modified on: {value.notes.modified}</p>
+                        <p>{value.notes.content}</p>
                         <button>Delete Note</button>
                     </div> 
                 )}

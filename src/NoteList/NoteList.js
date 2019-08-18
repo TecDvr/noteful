@@ -9,8 +9,8 @@ export default class NoteList extends React.Component {
             <NotefulContext.Consumer>
                 {(value) => (
                     <div>
-                        {value.state.notes.map(note => <Note />)}
-                        <button>Add Note</button>
+                        {value.notes.map(() => <Note />)}
+                        <button>Add A Note</button>
                     </div>
                 )}
             </NotefulContext.Consumer>

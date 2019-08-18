@@ -9,13 +9,9 @@ export default class FolderPage extends React.Component {
             <NotefulContext.Consumer>
                 {(value) => (
                     <div>
-                        {this.props.folders.filter(folder => folder.id===this.props.match.params.id).map(folder => <h2>{folder.name}</h2> )}
+                        {value.folders.filter(folder => folder.id===this.props.match.params.id).map(folder => <h2>{folder.name}</h2> )}
                         <div>
-                            {this.props.notes.filter(note=>note.folderId === this.props.match.params.id).map(note => <Note 
-                            id={note.id}
-                            name={note.name}
-                            modified={note.modified}
-                            />)}
+                            {value.notes.filter(note=>note.folderId === this.props.match.params.id).map(() => <Note />)}
                         </div>
                     </div>
                 )}              

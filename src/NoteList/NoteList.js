@@ -4,16 +4,13 @@ import Note from '../Note/Note';
 import NotefulContext from '../NotefulContext';
 
 export default class NoteList extends React.Component {
+    static contextType = NotefulContext;
     render() {
         return (
-            <NotefulContext.Consumer>
-                {(value) => (
                     <div>
-                        {value.notes.map(() => <Note />)}
+                        {this.context.notes.map(note => <Note id={note.id} />)}
                         <button>Add A Note</button>
-                    </div>
-                )}
-            </NotefulContext.Consumer>
+                    </div> 
         )
     }
 }

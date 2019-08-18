@@ -4,7 +4,7 @@ import NoteList from './NoteList/NoteList';
 import './App.css';
 import Folder from './Folder/Folder';
 import FolderPage from './FolderPage/FolderPage';
-import NotePage from './NotePage/NotePage';
+import Note from './Note/Note';
 import NotefulContext from './NotefulContext';
 
 export default class App extends React.Component {
@@ -12,7 +12,10 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       folders: [],
-      notes: []
+      notes: [],
+      addNote: (note)=>{
+        this.setState({notes: [...this.state.notes,note]});
+      }
     }
   }
 
@@ -37,13 +40,9 @@ export default class App extends React.Component {
   };
 
   render() {
-    const contextValue = {
-      folders: this.state.folders,
-      notes: this.state.notes
-    }
     
     return (
-      <NotefulContext.Provider value={contextValue}>
+      <NotefulContext.Provider value={this.state}>
         <div className='mainPage'>
 
           <header className='header'>
@@ -55,7 +54,7 @@ export default class App extends React.Component {
           <section>
             <Route 
               exact
-              path='/folderpage/:id'
+              path='/folder/:id'
               component={FolderPage} />
           </section>
 
@@ -66,8 +65,8 @@ export default class App extends React.Component {
               component={NoteList} />
             <Route 
               exact
-              path='/notepage/:id'
-              component={NotePage} />  
+              path='/note/:id'
+              render={(rprops)=><Note id={rprops.match.params.id}/>} />  
           </main>
 
         </div>

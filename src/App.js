@@ -13,8 +13,16 @@ export default class App extends React.Component {
     this.state = {
       folders: [],
       notes: [],
-      deleteNote: () => {},
+      deleteNote: this.deleteNote,
     }
+  }
+
+  deleteNote = noteId => {
+    const newNotes = this.state.notes.filter(note =>
+      note.id !== noteId)
+      this.setState({
+        notes: newNotes
+      })
   }
 
   componentDidMount() {

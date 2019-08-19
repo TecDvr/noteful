@@ -5,6 +5,15 @@ import { Route, NavLink } from 'react-router-dom';
 export default class Note extends React.Component {
     static contextType = NotefulContext;
 
+    deleteNote() {
+        fetch(`http://localhost:9090/notes/cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        }
+    
+
     render() {
         return (
             <div>
@@ -14,7 +23,7 @@ export default class Note extends React.Component {
                         <NavLink to={`/note/${note.id}`}>{note.name}</NavLink>
                         <p>Last modified: {note.modified}</p>
                         <Route path='/note' render={() => <p>{note.content}</p>}/>
-                        <button type='button'>Delete</button>
+                        <button onClick={() => this.deleteNote()}>Delete</button>
                     </div>)
                 })}
             </div>

@@ -13,9 +13,7 @@ export default class App extends React.Component {
     this.state = {
       folders: [],
       notes: [],
-      addNote: (note)=>{
-        this.setState({notes: [...this.state.notes,note]});
-      }
+      deleteNote: () => {},
     }
   }
 
@@ -40,7 +38,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    
     return (
       <NotefulContext.Provider value={this.state}>
         <div className='mainPage'>
@@ -66,7 +63,7 @@ export default class App extends React.Component {
             <Route 
               exact
               path='/note/:id'
-              render={(rprops)=><Note id={rprops.match.params.id}/>} />  
+              render={(rprops)=><Note id={rprops.match.params.id}/>}/>  
           </main>
 
         </div>

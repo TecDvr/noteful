@@ -9,8 +9,12 @@ export default class FolderPage extends React.Component {
         return ( 
             <div>
                 {this.context.folders.filter(folder => folder.id===this.props.match.params.id).map(folder => <h2>{folder.name}</h2> )}
-                <div className="note-item">
-                    {this.context.notes.filter(note=>note.folderId === this.props.match.params.id).map(note => <NavLink to={`/note/${note.id}`}>{note.name}</NavLink>)}
+                <div>
+                    {this.context.notes.filter(note=>note.folderId === this.props.match.params.id).map(note => <div>
+                        <NavLink to={`/note/${note.id}`}>{note.name}</NavLink>
+                        <p>Last modified: {note.modified}</p>
+                        <button>Delete</button>
+                    </div>)}
                 </div>
             </div>
         )

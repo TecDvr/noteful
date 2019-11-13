@@ -1,6 +1,7 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
 import { Route, NavLink, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function deleteNoteRequest(noteId, callback) {
     fetch('http://localhost:9090/notes' + `/${noteId}`, {
@@ -51,6 +52,8 @@ class Note extends React.Component {
     }
 }
 
-export default withRouter(Note);
+Note.propTypes = {
+  id: PropTypes.number
+};
 
-/* {(this.props.history.location.pathname == '/') ? <p></p> : <p>{note.content}</p>} */
+export default withRouter(Note);

@@ -2,6 +2,7 @@ import React from 'react';
 import './NoteList.css';
 import Note from '../Note/Note';
 import NotefulContext from '../NotefulContext';
+import PropTypes from 'prop-types';
 
 export default class NoteList extends React.Component {
     static contextType = NotefulContext;
@@ -14,3 +15,6 @@ export default class NoteList extends React.Component {
     }
 }
 
+NoteList.propTypes = {
+    id: PropTypes.number
+};

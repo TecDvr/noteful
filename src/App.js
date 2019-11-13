@@ -6,6 +6,7 @@ import Folder from './Folder/Folder';
 import FolderPage from './FolderPage/FolderPage';
 import Note from './Note/Note';
 import NotefulContext from './NotefulContext';
+import AddNote from './AddNote/AddNote';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -62,6 +63,9 @@ export default class App extends React.Component {
 
           <header className='header'>
             <Link className='title' style={{ textDecoration: 'none' }} to='/'>Noteful</Link>
+            <div>
+              <button className='addLink' ><Link className='link' style={{ textDecoration: 'none' }} to='/newnote'>Add Note</Link></button>
+            </div>
           </header>
 
           <Route path="/" component={Folder}/>
@@ -71,6 +75,13 @@ export default class App extends React.Component {
               exact
               path='/folder/:id'
               component={FolderPage} />
+          </section>
+
+          <section>
+            <Route
+              exact
+              path='/newnote'
+              component={AddNote} />
           </section>
 
           <main>

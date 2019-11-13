@@ -9,7 +9,6 @@ export default class NoteList extends React.Component {
         return (
                     <div>
                         {this.context.notes.map((note,index) => <Note key={`note-${index}`} id={note.id} {...this.props} />)}
-                        <button>Add A Note</button>
                     </div> 
         )
     }

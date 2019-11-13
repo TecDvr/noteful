@@ -8,7 +8,7 @@ export default class NoteList extends React.Component {
     render() {
         return (
                     <div>
-                        {this.context.notes.map(note => <Note id={note.id} />)}
+                        {this.context.notes.map((note,index) => <Note key={`note-${index}`} id={note.id} {...this.props} />)}
                         <button>Add A Note</button>
                     </div> 
         )

@@ -1,6 +1,6 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, withRouter } from 'react-router-dom';
 
 function deleteNoteRequest(noteId, callback) {
     fetch('http://localhost:9090/notes' + `/${noteId}`, {
@@ -22,15 +22,15 @@ function deleteNoteRequest(noteId, callback) {
         })
 }
 
-export default class Note extends React.Component {
+class Note extends React.Component {
     static contextType = NotefulContext;   
 
     render() {
         return (
-            <div>
-                {this.context.notes.filter(note=>note.id === this.props.id).map(note => {
+            <div className="note">
+                {this.context.notes.filter(note=>note.id === this.props.id).map((note,index) => {
                 return (
-                    <div>
+                    <div key={`note-${index}`}>
                         <NavLink to={`/note/${note.id}`}>{note.name}</NavLink>
                         <p>Last modified: {note.modified}</p>
                         <Route path='/note' render={() => <p>{note.content}</p>}/>
@@ -40,6 +40,7 @@ export default class Note extends React.Component {
                                     this.props.id,
                                     this.context.deleteNote,
                                 )
+                                this.props.history.push('/')
                             }}
                         >
                         Delete</button>
@@ -49,5 +50,7 @@ export default class Note extends React.Component {
         )
     }
 }
+
+export default withRouter(Note);
 
 /* {(this.props.history.location.pathname == '/') ? <p></p> : <p>{note.content}</p>} */

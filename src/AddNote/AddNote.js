@@ -1,0 +1,79 @@
+import React from 'react';
+import NotefulContext from '../NotefulContext';
+
+export default class AddNote extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      noteName: '',
+      noteBody: '',
+      noteFolder: ''  
+    }
+  }
+
+  static contextType = NotefulContext;
+
+    handleSubmit(event) {
+      event.preventDefault();
+      let date = new Date();
+      fetch('http://localhost:9090/notes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: this.state.noteName,
+            content: this.state.noteBody,
+            folderId: this.state.noteFolder,
+            modified: date
+        })
+      })
+        .then(response => response.json())
+        .then(responseJSON => {
+          console.log(responseJSON)
+          this.setState({
+              noteName: '',
+              noteBody: '',
+              noteFolder: ''
+            })
+          this.context.addNote(responseJSON);
+        })
+    }
+
+    render() {
+        return (
+            <form onSubmit={e => this.handleSubmit(e)}>
+                <label htmlFor='noteName'></label>
+                <input 
+                  type='text' 
+                  name='noteName' 
+                  id='noteName' 
+                  placeholder='New Note Name' 
+                  value={this.state.noteName}
+                  onChange={e=>this.setState({noteName:e.target.value})}
+                />
+                <label htmlFor='noteBody'></label>
+                <input 
+                  type='text' 
+                  name='noteBody' 
+                  id='noteBody' 
+                  placeholder='New Note Body' 
+                  value={this.state.noteBody}
+                  onChange={e=>this.setState({noteBody:e.target.value})}
+                />
+                <label htmlFor='noteFolder'></label>
+                <select 
+                    name="noteFolder"
+                    id='noteFolder'
+                    value={this.state.noteFolder}
+                    onChange={e=>this.setState({noteFolder:e.target.value})}>
+                        {this.context.folders.map((folder,index) => 
+                            <option
+                                key={index}
+                                value={folder.id}>{folder.name}</option>)}
+                </select>
+                <button>Add Note</button>
+            </form>
+        )
+    }
+}

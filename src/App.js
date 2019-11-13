@@ -14,6 +14,8 @@ export default class App extends React.Component {
       folders: [],
       notes: [],
       deleteNote: this.deleteNote,
+      addFolder: this.addFolder,
+      addNote: this.addNote
     }
   }
 
@@ -23,6 +25,14 @@ export default class App extends React.Component {
       this.setState({
         notes: newNotes
       })
+  }
+
+  addFolder = folder => {
+    this.setState({folders:[...this.state.folders,folder]})
+  }
+
+  addNote = note => {
+    this.setState({notes:[...this.state.notes,note]})
   }
 
   componentDidMount() {
@@ -54,7 +64,7 @@ export default class App extends React.Component {
             <Link className='title' style={{ textDecoration: 'none' }} to='/'>Noteful</Link>
           </header>
 
-          <Folder />
+          <Route path="/" component={Folder}/>
 
           <section>
             <Route 

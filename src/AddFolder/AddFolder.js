@@ -5,7 +5,8 @@ export default class AddFolder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      folderName: ''
+      folderName: '',
+      error: false
     }
   }
 
@@ -15,23 +16,29 @@ export default class AddFolder extends React.Component {
       event.preventDefault();
       const newFolder = this.state.folderName;
       console.log(newFolder);
-      fetch('http://localhost:9090/folders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({name:newFolder})
-      })
+      if (this.state.folderName === '') {
+        this.setState({error: true})
+      } else {
+        fetch('http://localhost:9090/folders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({name:newFolder})
+        })
         .then(response => response.json())
         .then(responseJSON => {
           console.log(responseJSON)
           this.setState({folderName: ''})
           this.context.addFolder(responseJSON);
         })
+        this.setState({error: false})
+      }
     }
 
     render() {
         return (
+          <div>
             <form onSubmit={e => this.handleSubmit(e)}>
                 <label htmlFor='folderName'></label>
                 <input 
@@ -44,6 +51,10 @@ export default class AddFolder extends React.Component {
                 />
                 <button>Add Folder</button>
             </form>
+            {this.state.error === true 
+              ? <p>Please enter a folder name</p>
+              : null }
+          </div>
         )
     }
 }

@@ -44,6 +44,7 @@ export default class AddNote extends React.Component {
                       noteFolder: ''
                     })
                   this.context.addNote(responseJSON);
+                  this.props.history.push('/')
                 })
         }
      

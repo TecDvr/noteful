@@ -8,16 +8,13 @@ class Folder extends React.Component {
     static contextType = NotefulContext;
     render() {
         return (
-                    <div className='folderList'>
-                        <div>
-                            {this.context.folders.map((folder,index) => <NavLink className='nameLink' key={`folder-nav-link-${index}`} to={`/folder/${folder.id}`}>{folder.name}</NavLink>)}
-                        </div>
-                        
-                        <div>
-                            <AddFolder />
-                        </div>
-                        <Route path='/note' render={() => <button onClick={() => this.props.history.goBack()}>Go Back</button>}/>
-                    </div>      
+            <div className='folderList'>
+                <div className='folderItems'>
+                    <AddFolder />
+                    {this.context.folders.map((folder,index) => <NavLink className='nameLink' key={`folder-nav-link-${index}`} to={`/folder/${folder.id}`}>{folder.name}</NavLink>)}
+                </div>
+                <Route path='/note' render={() => <button onClick={() => this.props.history.goBack()}>Go Back</button>}/>
+            </div>      
         ) 
     }
 }

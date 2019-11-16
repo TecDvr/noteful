@@ -48,3 +48,8 @@
 .link {
   border: none;
 }
+
+.bodyContainer {
+  display: flex;
+  flex-direction: row;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import NotefulContext from '../NotefulContext';
 import { Route, NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './Note.css';
 
 function deleteNoteRequest(noteId, callback) {
     fetch('http://localhost:9090/notes' + `/${noteId}`, {

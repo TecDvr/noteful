@@ -69,38 +69,41 @@ export default class App extends React.Component {
             </div>
           </header>
 
-          <Route path="/" component={Folder}/>
+          <div className='bodyContainer'>
+            <Route path="/" component={Folder}/>
 
-          <section>
-            <NoteError>
-              <Route 
-                exact
-                path='/folder/:id'
-                component={FolderPage} />
-            </NoteError>
-          </section>
+            <section>
+              <NoteError>
+                <Route 
+                  exact
+                  path='/folder/:id'
+                  component={FolderPage} />
+              </NoteError>
+            </section>
 
-          <section>
-            <NoteError>
-              <Route
-                exact
-                path='/newnote'
-                component={AddNote} />
-            </NoteError>
-          </section>
+            <section>
+              <NoteError>
+                <Route
+                  exact
+                  path='/newnote'
+                  component={AddNote} />
+              </NoteError>
+            </section>
 
-          <main>
-            <NoteError>
-              <Route 
-                exact
-                path='/' 
-                component={NoteList} />
-              <Route 
-                exact
-                path='/note/:id'
-                render={(rprops)=><Note id={rprops.match.params.id}/>}/>  
-            </NoteError>
-          </main>
+            <main>
+              <NoteError>
+                <Route 
+                  exact
+                  path='/' 
+                  component={NoteList} />
+                <Route 
+                  exact
+                  path='/note/:id'
+                  render={(rprops)=><Note id={rprops.match.params.id}/>}/>  
+              </NoteError>
+            </main>
+          </div>
+          
 
         </div>
       </NotefulContext.Provider>

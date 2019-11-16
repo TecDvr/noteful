@@ -1,10 +1,10 @@
 .nameLink {
     display: inline-block;
+    margin: 10px 10px 10px 0px;
     padding-right: 10px;
-    margin-right: 10px;
-    border-right: 1px solid black;
     color: black;
     text-decoration: none;
+    font-size: 20px;
 }
 
 .active {
@@ -14,7 +14,13 @@
 
 .folderList {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin: 10px 0px 10px 0px;
+    padding: 20px 20px 20px 20px;
+}
+
+.folderItems {
+    display: flex;
+    flex-direction: column;
 }

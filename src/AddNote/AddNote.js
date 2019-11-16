@@ -47,7 +47,6 @@ export default class AddNote extends React.Component {
                   this.props.history.push('/')
                 })
         }
-     
     }
 
     render() {

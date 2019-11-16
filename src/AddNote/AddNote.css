@@ -1,13 +1,24 @@
 .addContainer {
-    width: 90vw;
+    width: 50vw;
     height: 70vh;
     background-color: burlywood;
     margin: 20px auto 20px auto;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
 }
 
 .addForm {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
 
+.addForm input{
+    margin: 10px 0px 10px 0px;
+}
+
+.addForm button{
+    margin: 10px auto 10px auto;
+    height: 30px;
+    width: 100px;
 }
